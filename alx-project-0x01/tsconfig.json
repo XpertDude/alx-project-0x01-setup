@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "interfaces/index.ts  interfaces/index.ts doesn't exist"],
   "exclude": ["node_modules"]
 }
