@@ -1,21 +1,41 @@
-// pages/users/index.tsx
-import React from "react";
-import UserCard from "@/components/common/UserCard";
-import { UserProps } from "@/interfaces/UserProps";
+import { useState } from "react";
+import UserModal from "@/components/common/UserModal";
+import { UserData } from "@/interfaces/UserData";
 
-interface UsersPageProps {
-  posts: UserProps[];
+interface UsersProps {
+  posts: UserData[];
 }
 
-const Users: React.FC<UsersPageProps> = ({ posts }) => {
+const Users = ({ posts }: UsersProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="container mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-6">Users</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Users</h1>
+
+      {/* Add User Button */}
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="mb-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+      >
+        Add User
+      </button>
+
+      {/* Modal */}
+      <UserModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* User List */}
+      <ul className="grid gap-4">
         {posts.map((user) => (
-          <UserCard key={user.id} user={user} />
+          <li
+            key={user.id}
+            className="p-4 border rounded-md shadow-sm hover:shadow-md"
+          >
+            <p className="font-semibold">{user.name}</p>
+            <p className="text-sm text-gray-500">{user.email}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
