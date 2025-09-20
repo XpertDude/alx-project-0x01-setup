@@ -66,4 +66,5 @@ export interface UserData {
     catchPhrase: string;
     bs: string;
   };
+  onSubmit: (post: UserProps) => void;
 }
