@@ -2,13 +2,6 @@ import { FC } from "react";
 import { UserData } from "@/interfaces/UserData";
 import { UserProps } from "@/interfaces";
 
-interface UserModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSubmit: (post: UserProps) => void;
-  user?: UserData; // optional, can also be used for editing user details
-}
-
 const UserModal: FC<UserModalProps> = ({ isOpen, onClose, user }) => {
   if (!isOpen) return null;
 

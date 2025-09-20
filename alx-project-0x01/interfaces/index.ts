@@ -66,5 +66,11 @@ export interface UserData {
     catchPhrase: string;
     bs: string;
   };
+}
+
+export interface UserModalProps {
+  isOpen: boolean;
+  onClose: () => void;
   onSubmit: (post: UserProps) => void;
+  user?: UserData; // optional, can also be used for editing user details
 }
